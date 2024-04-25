@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "server.js",
+    "public/",
+    "views/**/*"
+  ],
+  "ext": "js,css,ejs,mjs,cjs,json"
+}

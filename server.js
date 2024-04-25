@@ -11,6 +11,19 @@ const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
 
+
+/*************************
+ * LIVE RELOAD FEATURES
+***************************/
+var livereload = require("livereload");
+var connectLiveReload = require("connect-livereload");
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(['public', "views"]);
+
+app.use(connectLiveReload());
+
+
 /* ***********************
  * View engine templates
  *************************/
