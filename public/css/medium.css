@@ -52,4 +52,8 @@
   #reviews {
     font-size: 1.25em;
   }
+
+  #inv-display>li {
+    width: 30%;
+  }
 }

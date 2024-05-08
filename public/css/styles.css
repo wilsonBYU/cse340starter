@@ -52,8 +52,12 @@ nav>ul {
   width: 100%;
   justify-content: space-evenly;
   background-color: rgb(22, 22, 54);
-  color: white;
   padding: 0.5em 0;
+}
+
+nav>ul>li>a {
+  color: white;
+  text-decoration: none;
 }
 
 #jumbotron {
@@ -137,4 +141,32 @@ nav>ul {
 
 .features {
   margin-bottom: 2em;
+}
+
+#inv-display {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  gap: 1em;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+#inv-display>li {
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  width: 75%;
+}
+
+#inv-display img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+
+#inv-display hr {
+  height: 5px;
+  background-color: black;
 }

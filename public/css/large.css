@@ -4,4 +4,8 @@
     max-width: 60%;
   }
 
+  #inv-display>li {
+    width: 23%;
+  }
+
 }
