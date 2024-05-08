@@ -1,7 +1,15 @@
-<% if (title) { %>
-  <h1> <%= title %></h1>
-<% } else {
-  res.redirect('/')
-} %>
+<div class="error_page">
+  <% if (title) { %>
+    <h1> <%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
+  
+  <% if (title == 404 || title == "404") { %>
+    <img src="/images/site/lost.png" alt="Injured person">
+  <% } else { %>
+   <img src="/images/site/injured.png" alt="Injured person">
+  <% } %>
 
-<h3><%= message %></h3>
+  <h3><%= message %></h3>
+</div>

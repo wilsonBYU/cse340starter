@@ -170,3 +170,33 @@ nav>ul>li>a {
   height: 5px;
   background-color: black;
 }
+
+#inv-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.inv-details_image>img {
+  max-width: 100%;
+  height: auto;
+}
+
+.inv-details_info p {
+  padding: 0.5em 1em;
+}
+
+.inv-details_info p:nth-child(even) {
+  background-color: rgb(238, 238, 238);
+}
+
+.error_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error_page img {
+  max-height: 300px;
+  width: auto;
+}

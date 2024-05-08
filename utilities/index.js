@@ -50,7 +50,7 @@ const classificationGridItem = (vehicle) => {
           <a href="../../inv/detail/${vehicle.inv_id}" title="View ${vehicle.inv_make} ${vehicle.inv_model} details">
             ${vehicle.inv_make} ${vehicle.inv_model}
           </a>
-        <h2/>
+        </h2>
         <span>
           $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}
         </span>
@@ -72,6 +72,32 @@ Util.buildClassificationGrid = async function (data) {
   return grid
 }
 
+Util.buildByVehicleId = async function (data) {
+  let template
+  console.log(data)
+  if (data != null || data != undefined) {
+    template = `
+      <div id="inv-details">
+        <div class="inv-details_image">
+          <img src="${data.inv_image}" alt="${data.inv_make} ${data.inv_model} details">
+        </div>
+        <div class="inv-details_info">
+          <h3>${data.inv_make} ${data.inv_model} Details</h3>
+          <p><strong>Price: $${new Intl.NumberFormat("en-US").format(data.inv_price)}</strong></p>
+          <p><strong>Description: </strong>${data.inv_description}</p>
+          <p><strong>Color: </strong>${data.inv_color}</p>
+          <p><strong>Miles: </strong>${new Intl.NumberFormat("en-US").format(data.inv_miles)}</p>
+
+        </div>
+      </div>
+    `
+  } else {
+    template = `<p class="notice">Sorry, no matching vehicles could be found.</p>`
+  }
+  return template
+
+}
+
 
 /************************************
  * Middleware for handling errors
@@ -79,6 +105,7 @@ Util.buildClassificationGrid = async function (data) {
  * General error handling
  ************************************/
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
 
 
 module.exports = Util

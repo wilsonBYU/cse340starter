@@ -56,4 +56,16 @@
   #inv-display>li {
     width: 30%;
   }
+
+  #inv-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #inv-details div {
+
+    width: 48%;
+    gap: 1em;
+  }
 }
