@@ -28,7 +28,8 @@ invCont.buildByVehicleId = async function (req, res, next) {
   res.render("./inventory/vehicle", {
     title: `${data.inv_year} ${data.inv_make} ${data.inv_model}`,
     nav,
-    template
+    template,
+    errors: null
   })
 }
 

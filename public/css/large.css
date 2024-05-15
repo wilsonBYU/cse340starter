@@ -8,4 +8,8 @@
     width: 23%;
   }
 
+  #loginForm,
+  #regForm {
+    max-width: 40%;
+  }
 }

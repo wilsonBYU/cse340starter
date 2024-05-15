@@ -68,4 +68,9 @@
     width: 48%;
     gap: 1em;
   }
+
+  #loginForm,
+  #regForm {
+    max-width: 50%;
+  }
 }

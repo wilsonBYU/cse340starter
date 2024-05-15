@@ -10,7 +10,8 @@
 h1,
 h2,
 h3,
-h4 {
+h4,
+input[type=button] {
   font-family: "Imprima", sans-serif;
   font-weight: bold;
 }
@@ -18,7 +19,8 @@ h4 {
 p,
 span,
 a,
-li {
+li,
+label {
   font-family: "Scope One", serif;
   font-weight: 500;
   font-style: normal;
@@ -199,4 +201,68 @@ nav>ul>li>a {
 .error_page img {
   max-height: 300px;
   width: auto;
+}
+
+.notice {
+  color: red;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#loginForm,
+#regForm {
+  background-color: rgb(37, 60, 87);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#loginForm label,
+#regForm label {
+  display: flex;
+  flex-direction: column;
+}
+
+#loginForm input,
+#regForm input {
+  width: auto;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  font-weight: bolder;
+  border: none;
+}
+
+#loginForm input[type=button],
+#regForm input[type=button] {
+  cursor: pointer;
+}
+
+#loginForm input[type=button]:active,
+#regForm input[type=button]:active {
+  color: gray;
+}
+
+#loginForm p,
+#regForm p {
+  text-align: center;
+}
+
+#loginForm p>a,
+#regForm p>a {
+  font-weight: bold;
+  color: white;
+}
+
+input:required:invalid,
+input:focus:invalid {
+  background-color: rgb(255, 178, 178);
+}
+
+input:required:valid {
+  background-color: rgb(178, 255, 188);
 }
