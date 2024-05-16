@@ -1,5 +1,6 @@
 const { normalizePath } = require("vite")
 const utilities = require(".")
+const accountModel = require("../models/account-model")
 
 const { body, validationResult } = require("express-validator")
 const validate = {}
@@ -24,7 +25,13 @@ validate.registrationRules = () => {
       .notEmpty()
       .isEmail()
       .normalizeEmail()
-      .withMessage("A valid email is required."),
+      .withMessage("A valid email is required.")
+      .custom(async (account_email) => {
+        const emailExists = await accountModel.checkExistingEmail(account_email)
+        if (emailExists) {
+          throw new Error("Email exists. Please log in or use different email")
+        }
+      }),
     body("account_password")
       .trim()
       .notEmpty()
@@ -41,6 +48,7 @@ validate.registrationRules = () => {
 
 validate.checkRegData = async (req, res, next) => {
   const { account_firstname, account_lastname, account_email } = req.body
+  console.log(req.body)
   let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {

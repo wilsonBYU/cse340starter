@@ -9,7 +9,7 @@
 <% if (errors) { %>
   <ul class="notice">
  <% errors.array().forEach(error => { %>
-   <li><%= error.msg %></li>
+  <li><%= error.msg %></li>
 <%  }) %>
  </ul>
 <% } %>
@@ -17,15 +17,15 @@
 <form action="/account/registration" method="post" id="regForm">
   <label for="account_firstname">
     First name
-    <input required type="text" name="account_firstname" id="fName" >
+    <input required type="text" name="account_firstname" id="fName" value="<%= locals.account_firstname %>">
   </label>
   <label for="account_lastname">
     Last name
-    <input required type="text" name="account_lastname" id="lName">
+    <input required type="text" name="account_lastname" id="lName" value="<%= locals.account_lastname %>">
   </label>
   <label for="account_email">
     Email address
-    <input required type="email" name="account_email" id="email">
+    <input required type="email" name="account_email" id="email" value="<%= locals.account_email %>">
   </label>
   <label for="account_password">
     Password
