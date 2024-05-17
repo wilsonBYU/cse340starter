@@ -46,8 +46,6 @@ async function registerAccount(req, res) {
     hashedPassword
   )
 
-  console.log(regResult)
-
   if (regResult) {
     req.flash(
       "notice", `Congratulations you\'re registered ${account_firstname}. Please log in.`

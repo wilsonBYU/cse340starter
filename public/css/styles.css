@@ -228,8 +228,8 @@ nav>ul>li>a {
   flex-direction: column;
 }
 
-#loginForm input,
-#regForm input {
+input,
+select {
   width: auto;
   padding: 0.5em 1em;
   border-radius: 5px;
@@ -238,12 +238,12 @@ nav>ul>li>a {
 }
 
 #loginForm input[type=button],
-#regForm input[type=button] {
+#regForm input[type=submit] {
   cursor: pointer;
 }
 
 #loginForm input[type=button]:active,
-#regForm input[type=button]:active {
+#regForm input[type=submit]:active {
   color: gray;
 }
 
@@ -265,4 +265,41 @@ input:focus:invalid {
 
 input:required:valid {
   background-color: rgb(178, 255, 188);
+}
+
+#add-classification,
+#add-inventory {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(37, 60, 87);
+  padding: 1em;
+  color: white;
+}
+
+#add-classification>p {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+#add-classification>form,
+#add-inventory>form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: gray solid 1px;
+  padding: 0.5em;
+}
+
+#add-classification>form>label,
+#add-inventory>form>label {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-classification>form>label {
+  gap: 1em;
+}
+
+#classification_id>option {
+  padding: 1em;
 }

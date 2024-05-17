@@ -61,15 +61,18 @@ const classificationGridItem = (vehicle) => {
 
 Util.buildClassificationGrid = async function (data) {
   let grid
+  let hasData
   if (data.length > 0) {
     grid = `
       <ul id="inv-display">
         ${data.map(classificationGridItem).join("")}
       </ul>`
+    hasData = true
   } else {
     grid = `<p class="notice">Sorry, no matching vehicles could be found.</p>`
+    hasData = false
   }
-  return grid
+  return { grid, hasData }
 }
 
 Util.buildByVehicleId = async function (data) {
@@ -96,6 +99,31 @@ Util.buildByVehicleId = async function (data) {
   }
   return template
 
+}
+
+let classficiationListItemTemplate = (c_id, row) => {
+  //console.log(c_id, row)
+  let option = `
+    <option value="${row.classification_id}" ${row.classification_id != null && row.classification_id == c_id ? "selected" : ""}>
+      ${row.classification_name}
+    </option>
+  `.split("\n").join(" ")
+  //console.log(option)
+  return option
+}
+
+let classificationListTemplate = (classification_id, data) => {
+  return `
+  <select name="classification_id" id="classificationList" required>
+    ${data.rows.map(row => classficiationListItemTemplate(classification_id, row)).join(" ")}
+  </select >`
+}
+
+Util.buildClassificationList = async function (classification_id = null) {
+  let data = await invModel.getClassifications()
+  let classificationList = classificationListTemplate(classification_id, data)
+  console.log(classificationList.split("\n").join(""))
+  return classificationList
 }
 
 
