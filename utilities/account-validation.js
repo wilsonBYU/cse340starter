@@ -1,4 +1,3 @@
-const { normalizePath } = require("vite")
 const utilities = require(".")
 const accountModel = require("../models/account-model")
 
