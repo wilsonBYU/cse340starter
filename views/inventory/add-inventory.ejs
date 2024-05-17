@@ -22,39 +22,39 @@
     </label>
     <label for="inv_make">
       Make
-      <input required type="text" name="inv_make" id="inv_make" placeholder="Min of 3 characters" pattern="[A-z1-9]{3,}">
+      <input required type="text" name="inv_make" id="inv_make" placeholder="Min of 3 characters" pattern="[A-z0-9]{3,}" value="<%= locals.inv_make %>">
     </label>
     <label for="inv_model"pattern="[A-z1-9]{3,}">
       Model
-      <input required type="text" name="inv_model" id="inv_model" placeholder="Min of 3 characters" pattern="[A-z1-9]{3,}">
+      <input required type="text" name="inv_model" id="inv_model" placeholder="Min of 3 characters" pattern="[A-z0-9]{3,}" value="<%= locals.inv_model %>">
     </label>
     <label for="inv_description">
       Description
-      <input required type="text" name="inv_description" id="inv_description">
+      <textarea required type="text" name="inv_description" id="inv_description" rows="7"><%= locals.inv_description %></textarea>
     </label>
     <label for="inv_image">
       Image Path
-      <input required type="text" name="inv_image" id="inv_image" value="/images/vehicles/no-image.png" placeholder="/images/vehicles/no-image.png">
+      <input required type="text" name="inv_image" id="inv_image" value="/images/vehicles/no-image.png" placeholder="/images/vehicles/no-image.png" value="<%= locals.inv_image %>">
     </label>
     <label for="inv_thumbnail">
       Thumbnail Path
-      <input required type="text" name="inv_thumbnail" id="inv_thumbnail" value="/images/vehicles/no-image.png" placeholder="/images/vehicles/no-image.png">
+      <input required type="text" name="inv_thumbnail" id="inv_thumbnail" value="/images/vehicles/no-image.png" placeholder="/images/vehicles/no-image.png" value="<%= locals.inv_thumbnail %>">
     </label>
     <label for="inv_price">
       Price
-      <input required type="text" name="inv_price" id="inv_price" placeholder="Decimal or integer" pattern="^[1-9]{1,}([,.][1-9]{1,})?$">
+      <input required type="text" name="inv_price" id="inv_price" placeholder="Decimal or integer" pattern="^[0-9]{1,}([,.][0-9]{1,})?$" value="<%= locals.inv_price %>">
     </label>
     <label for="inv_year">
       Year
-      <input required type="text" name="inv_year" id="inv_year" placeholder="4-digit year" pattern="[1-9]{4}">
+      <input required type="text" name="inv_year" id="inv_year" maxlength="4" placeholder="4-digit year" pattern="[0-9]{4}" value="<%= locals.inv_year %>">
     </label>
     <label for="inv_miles">
       Miles
-      <input required type="text" name="inv_miles" id="inv_miles" placeholder="digits only" pattern="[1-9]{1,}">
+      <input required type="text" name="inv_miles" id="inv_miles" placeholder="digits only" pattern="[0-9]{1,}" value="<%= locals.inv_miles %>">
     </label>
     <label for="inv_color">
       Color
-      <input type="text" name="inv_color" id="inv_color">
+      <input required type="text" name="inv_color" id="inv_color" value="<%= locals.inv_color %>">
     </label>
     <input type="submit" value="Add classification">
   </form>

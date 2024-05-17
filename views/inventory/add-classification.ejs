@@ -20,7 +20,7 @@
     <label for="classification_name">
       <span>Classification Name</span>
       <span>Name must be minimum of 3 alphabetic characters only</span>
-      <input type="text" name="classification_name" id="classification_name" pattern="[A-z]{3,}">
+      <input type="text" name="classification_name" id="classification_name" pattern="[A-z]{3,}" value="<%= locals.classification_name %>">
     </label>
     <input type="submit" value="Add classification">
   </form>

@@ -70,7 +70,8 @@
   }
 
   #loginForm,
-  #regForm {
+  #regForm,
+  #add-inventory {
     max-width: 50%;
   }
 }

@@ -77,7 +77,6 @@ Util.buildClassificationGrid = async function (data) {
 
 Util.buildByVehicleId = async function (data) {
   let template
-  console.log(data)
   if (data != null || data != undefined) {
     template = `
       <div id="inv-details">
@@ -102,13 +101,11 @@ Util.buildByVehicleId = async function (data) {
 }
 
 let classficiationListItemTemplate = (c_id, row) => {
-  //console.log(c_id, row)
   let option = `
     <option value="${row.classification_id}" ${row.classification_id != null && row.classification_id == c_id ? "selected" : ""}>
       ${row.classification_name}
     </option>
   `.split("\n").join(" ")
-  //console.log(option)
   return option
 }
 
@@ -122,7 +119,6 @@ let classificationListTemplate = (classification_id, data) => {
 Util.buildClassificationList = async function (classification_id = null) {
   let data = await invModel.getClassifications()
   let classificationList = classificationListTemplate(classification_id, data)
-  console.log(classificationList.split("\n").join(""))
   return classificationList
 }
 
