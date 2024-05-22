@@ -51,4 +51,38 @@ async function registerInventory(classification_id, inv_make, inv_model, inv_des
   }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, registerInventory }
+async function updateInventory(
+  classification_id,
+  inv_make,
+  inv_model,
+  inv_description,
+  inv_image,
+  inv_thumbnail,
+  inv_price,
+  inv_year,
+  inv_miles,
+  inv_color,
+  inv_id) {
+  try {
+    const sql = `UPDATE inventory SET inv_make = $1, inv_model = $2, inv_description = $3, inv_image = $4, inv_thumbnail = $5, inv_price = $6, inv_year = $7, inv_miles = $8, inv_color = $9, classification_id = $10 WHERE inv_id = $11 RETURNING *`
+    const data = await pool.query(sql, [
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+      classification_id,
+      inv_id
+    ])
+    console.log("ID A modificat: ", inv_color)
+    return data.rows[0]
+  } catch (error) {
+    console.error("Model error: " + error)
+  }
+}
+
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, registerInventory, updateInventory }

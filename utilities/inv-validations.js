@@ -58,12 +58,10 @@ validate.inventoryRules = () => {
       .withMessage("Pleasee provide a valid description"),
     body("inv_image")
       .trim()
-      .escape()
       .notEmpty()
       .withMessage("Pleasee provide a valid image path"),
     body("inv_thumbnail")
       .trim()
-      .escape()
       .notEmpty()
       .withMessage("Pleasee provide a valid image path"),
     body("inv_price")
@@ -115,6 +113,36 @@ validate.checkInventoryData = async function (req, res, next) {
       inv_year,
       inv_miles,
       inv_color
+    })
+    return
+  }
+  next()
+}
+
+validate.checkUpdateData = async function (req, res, next) {
+  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, inv_id } = req.body
+  let classifications = await utilities.buildClassificationList(classification_id)
+  let errors = []
+  const itemName = `${inv_make} ${inv_model}`
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("./inventory/edit-inventory", {
+      classifications,
+      errors,
+      title: "Edit " + itemName,
+      classification_id,
+      nav,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+      inv_id
     })
     return
   }

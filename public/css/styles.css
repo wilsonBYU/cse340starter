@@ -268,7 +268,8 @@ input:required:valid {
 }
 
 #add-classification,
-#add-inventory {
+#add-inventory,
+#update-form {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -283,7 +284,8 @@ input:required:valid {
 }
 
 #add-classification>form,
-#add-inventory>form {
+#add-inventory>form,
+#update-form>form {
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -292,7 +294,8 @@ input:required:valid {
 }
 
 #add-classification>form>label,
-#add-inventory>form>label {
+#add-inventory>form>label,
+#update-form>form>label {
   display: flex;
   flex-direction: column;
 }
@@ -303,4 +306,26 @@ input:required:valid {
 
 #classification_id>option {
   padding: 1em;
+}
+
+#inventoryDisplay,
+#inventoryDisplay thead>tr {
+  margin-top: 1em;
+  border: 1px solid;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#inventoryDisplay td,
+#inventoryDisplay th {
+  padding: 0.5em;
+}
+
+#inventoryDisplay thead>tr {
+  background-color: hsl(197, 100%, 96%);
+  text-align: left;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: rgb(235, 235, 235);
 }

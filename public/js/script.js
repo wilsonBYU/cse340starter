@@ -6,3 +6,4 @@ document.querySelector("#showPassword").addEventListener("click", () => {
     input.type = "password"
   }
 })
+
