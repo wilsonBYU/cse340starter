@@ -43,7 +43,7 @@ async function registerClassification(classification_name) {
 
 async function registerInventory(classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color) {
   try {
-    let sql = `INSERT INTO public.inventory (inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`
+    let sql = `INSERT INTO public.inventory (classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`
     const inventoryResult = await pool.query(sql, [classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color])
     return inventoryResult
   } catch (error) {
@@ -85,4 +85,13 @@ async function updateInventory(
   }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, registerInventory, updateInventory }
+async function deleteIventory(inv_id) {
+  try {
+    let data = await pool.query("DELETE FROM inventory WHERE inv_id = $1", [inv_id])
+    return data.rowCount
+  } catch (error) {
+    console.error("Delete Inventory Error: ", error)
+  }
+}
+
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, registerInventory, updateInventory, deleteIventory }

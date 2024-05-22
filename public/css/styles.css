@@ -237,6 +237,13 @@ select {
   border: none;
 }
 
+input[type=text]:read-only {
+  background-color: rgb(184, 184, 184);
+  color: rgb(65, 65, 65);
+  outline: none;
+}
+
+
 #loginForm input[type=button],
 #regForm input[type=submit] {
   cursor: pointer;
@@ -269,7 +276,8 @@ input:required:valid {
 
 #add-classification,
 #add-inventory,
-#update-form {
+#update-form,
+#delete-form {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -278,14 +286,15 @@ input:required:valid {
   color: white;
 }
 
-#add-classification>p {
+#add-classification>p #delete-form>p {
   margin-top: 0;
   font-weight: bold;
 }
 
 #add-classification>form,
 #add-inventory>form,
-#update-form>form {
+#update-form>form,
+#delete-form>form {
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -295,7 +304,8 @@ input:required:valid {
 
 #add-classification>form>label,
 #add-inventory>form>label,
-#update-form>form>label {
+#update-form>form>label,
+#delete-form>form>label {
   display: flex;
   flex-direction: column;
 }

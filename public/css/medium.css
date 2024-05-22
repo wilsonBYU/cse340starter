@@ -69,9 +69,10 @@
     gap: 1em;
   }
 
-  #loginForm,
-  #regForm,
-  #add-inventory {
+  #add-classification,
+  #add-inventory,
+  #update-form,
+  #delete-form {
     max-width: 50%;
   }
 }
