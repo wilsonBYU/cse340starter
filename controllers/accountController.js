@@ -104,7 +104,7 @@ async function buildAccount(req, res, next) {
   res.render("account/account", {
     title: "Account Management",
     nav,
-    errors: null
+    errors: null,
   })
 }
 

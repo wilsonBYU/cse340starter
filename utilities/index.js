@@ -155,6 +155,18 @@ Util.checkLogin = (req, res, next) => {
 }
 
 
+//Check if the user tye is allowed to access the routes
+Util.checkAccessRights = async (req, res, next) => {
+  const cookie = req.cookies
+  const { account_type } = jwt.verify(cookie.jwt, process.env.ACCESS_TOKEN_SECRET)
+  if (["Employee", "Admin"].includes(account_type)) {
+    next()
+  } else {
+    req.flash("notice", "Access forbidden")
+    res.redirect("/account/login")
+  }
+}
+
 /************************************
  * Middleware for handling errors
  * wrap other function in this for
