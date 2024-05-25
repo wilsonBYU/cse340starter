@@ -43,7 +43,6 @@ classificationList.addEventListener("change", function () {
       throw Error("Network response was not OK")
     })
     .then(function (data) {
-      console.log(data)
       buildInventoryList(data)
     })
     .catch(function (error) {

@@ -277,7 +277,9 @@ input:required:valid {
 #add-classification,
 #add-inventory,
 #update-form,
-#delete-form {
+#delete-form,
+#updateAccountForm,
+#changePasswordForm {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -294,7 +296,9 @@ input:required:valid {
 #add-classification>form,
 #add-inventory>form,
 #update-form>form,
-#delete-form>form {
+#delete-form>form,
+#updateAccountForm,
+#changePasswordForm {
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -305,9 +309,15 @@ input:required:valid {
 #add-classification>form>label,
 #add-inventory>form>label,
 #update-form>form>label,
-#delete-form>form>label {
+#delete-form>form>label,
+#updateAccountForm>label,
+#changePasswordForm>label {
   display: flex;
   flex-direction: column;
+}
+
+#updateAccountForm {
+  margin-bottom: 1em;
 }
 
 #add-classification>form>label {

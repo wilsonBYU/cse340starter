@@ -72,7 +72,9 @@
   #add-classification,
   #add-inventory,
   #update-form,
-  #delete-form {
+  #delete-form,
+  #updateAccountForm,
+  #changePasswordForm {
     max-width: 50%;
   }
 }

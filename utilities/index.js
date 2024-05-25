@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const actModel = require("../models/account-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -157,13 +158,29 @@ Util.checkLogin = (req, res, next) => {
 
 //Check if the user tye is allowed to access the routes
 Util.checkAccessRights = async (req, res, next) => {
-  const cookie = req.cookies
-  const { account_type } = jwt.verify(cookie.jwt, process.env.ACCESS_TOKEN_SECRET)
-  if (["Employee", "Admin"].includes(account_type)) {
-    next()
+  if (req.cookies.jwt) {
+    const { account_type } = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
+    if (["Employee", "Admin"].includes(account_type)) {
+      next()
+    }
   } else {
     req.flash("notice", "Access forbidden")
     res.redirect("/account/login")
+  }
+}
+
+Util.updateJWTAccountInfo = async (data, req, res, next) => {
+  if (req.cookies.jwt) {
+    let jwtoken = req.cookies.jwt
+    const { exp } = jwt.verify(jwtoken, process.env.ACCESS_TOKEN_SECRET)
+    const newExp = (new Date(exp * 1000).getTime() - new Date().getTime()) / 1000
+    const newAccessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, { expiresIn: Math.round(newExp) })
+    if (process.env.NODE_ENV === "development") {
+      res.cookie("jwt", newAccessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+    } else {
+      res.cookie("jwt", newAccessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+    }
+    return
   }
 }
 
