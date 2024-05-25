@@ -143,11 +143,13 @@ validate.checkUpdatedData = async (req, res, next) => {
   errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
+    const { account_id } = req.body
+    const accountResult = await accountModel.getAccountById(account_id)
     res.status(501).render("./account/update-account", {
       title: "Edit Account",
       nav,
       errors,
-      accountData: req.body
+      accountData: accountResult
     })
     return
   }
