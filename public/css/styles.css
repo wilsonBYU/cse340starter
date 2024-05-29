@@ -101,6 +101,8 @@ nav>ul>li>a {
   font-weight: bold;
   padding: 0.5em 1em;
   border-radius: 5px;
+  font-family: "Imprima", sans-serif;
+  font-weight: bold;
 }
 
 #upgrades {
@@ -245,12 +247,14 @@ input[type=text]:read-only {
 
 
 #loginForm input[type=button],
-#regForm input[type=submit] {
+#regForm input[type=submit],
+#removeWatchList>a {
   cursor: pointer;
 }
 
 #loginForm input[type=button]:active,
-#regForm input[type=submit]:active {
+#regForm input[type=submit]:active,
+#removeWatchList>a:active {
   color: gray;
 }
 
@@ -348,4 +352,39 @@ input:required:valid {
 
 #inventoryDisplay tr:nth-child(even) {
   background-color: rgb(235, 235, 235);
+}
+
+#wathlistForm,
+#removeWatchList {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+
+#removeWatchList>a {
+  color: black;
+}
+
+
+#wathlistForm>input[type=submit] {
+  cursor: pointer;
+  background-color: #00baff;
+}
+
+#wathlistForm>input[type=submit]:hover {
+  color: white;
+  background-color: #0078a3;
+}
+
+#removeWatchList>a {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #c0c0c0;
+}
+
+#removeWatchList>a:hover {
+  background-color: #c53c3c;
+  color: white;
 }

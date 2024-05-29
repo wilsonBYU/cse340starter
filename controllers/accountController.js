@@ -22,7 +22,6 @@ async function accountLogin(req, res) {
   let nav = await utilities.getNav()
   const { account_email, account_password } = req.body
   const accountData = await actModel.getAccountByEmail(account_email)
-  console.log(accountData)
   if (!accountData) {
     req.flash("notice", "Please check your credentials and try again.")
     res.status(400).render("account/login", {
@@ -107,7 +106,6 @@ async function registerAccount(req, res) {
 async function buildAccount(req, res, next) {
   let nav = await utilities.getNav()
   let accountInfo = await actModel.getAccountById(res.locals.accountData.account_id)
-  console.log(accountInfo)
   res.render("account/account", {
     title: "Account Management",
     nav,

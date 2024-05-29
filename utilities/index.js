@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model")
 const actModel = require("../models/account-model")
+const watchlistModel = require("../models/watchlist-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -131,7 +132,7 @@ Util.checkJWTToken = (req, res, next) => {
     jwt.verify(
       req.cookies.jwt,
       process.env.ACCESS_TOKEN_SECRET,
-      function (err, accountData) {
+      async function (err, accountData) {
         if (err) {
           req.flash("Please log in")
           res.clearCookie("jwt")
@@ -139,6 +140,7 @@ Util.checkJWTToken = (req, res, next) => {
         }
         res.locals.accountData = accountData
         res.locals.loggedin = 1
+        res.locals.watchList = await watchlistModel.getWatchList(accountData.account_id)
         next()
       })
   } else {
@@ -183,6 +185,8 @@ Util.updateJWTAccountInfo = async (data, req, res, next) => {
     return
   }
 }
+
+
 
 /************************************
  * Middleware for handling errors

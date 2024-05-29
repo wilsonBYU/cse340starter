@@ -1,7 +1,6 @@
 'use strict'
 
 const tableRowTemplate = (row) => {
-  console.log(row.inv_id + " " + row.inv_model)
   return `
   <tr>
     <td>${row.inv_make} ${row.inv_model}</td>

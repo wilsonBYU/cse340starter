@@ -1,6 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
-
+const watchlistUtils = require("../utilities/watchlist")
 const invCont = {}
 
 /***************************
@@ -24,12 +24,14 @@ invCont.buildByVehicleId = async function (req, res, next) {
   const vehicle_id = req.params.vehicleId
   const data = await invModel.getVehicleById(vehicle_id)
   const template = await utilities.buildByVehicleId(data)
+  const watchListButton = watchlistUtils.buildCheckListButton(res, req)
   let nav = await utilities.getNav()
   res.render("./inventory/vehicle", {
     title: `${data.inv_year} ${data.inv_make} ${data.inv_model}`,
     nav,
     template,
-    errors: null
+    errors: null,
+    watchListButton
   })
 }
 
